@@ -22,6 +22,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -59,25 +60,33 @@ public class usergui extends JFrame {
 	 */
 	public usergui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 802, 750);
+		setBounds(100, 100, 1097, 918);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setFont(new Font("ËÎÌå", Font.PLAIN, 30));
-		lblNewLabel.setText("Hello, " + ac);
+		JLabel imajl = new JLabel();
+		imajl.setFont(new Font("å®‹ä½“", Font.PLAIN, 30));
+		imajl.setText("Hello, " + ac);
+		
+		
 		//lblNewLabel.setText("Hello");
-		lblNewLabel.setBounds(14, 13, 279, 92);
-		contentPane.add(lblNewLabel);
+		imajl.setBounds(432, 39, 279, 92);
+		contentPane.add(imajl);
 		con = db.getConnection();
 		if(con == null)
 			JOptionPane.showMessageDialog(null, "Network Error!");
 		JLabel lblNewLabel_1 = new JLabel();
-		lblNewLabel_1.setFont(new Font("ËÎÌå", Font.PLAIN, 20));
+		lblNewLabel_1.setFont(new Font("å®‹ä½“", Font.PLAIN, 20));
 		lblNewLabel_1.setText("Wallet: " + dbu.getwallet(con, ac)+"");
-		lblNewLabel_1.setBounds(307, 12, 237, 107);
+		lblNewLabel_1.setBounds(842, 154, 237, 55);
 		contentPane.add(lblNewLabel_1);
+		
+		ImageIcon img=new ImageIcon(dbu.getuimage(con, ac));
+		JLabel lblNewLabel_4 = new JLabel(img);
+		lblNewLabel_4.setBounds(0, 0, 363, 342);
+		contentPane.add(lblNewLabel_4);
+		
 		
 		JButton gameshop = new JButton("gameshop");
 		gameshop.addActionListener(new ActionListener() {
@@ -86,7 +95,7 @@ public class usergui extends JFrame {
 				shopgui.runrun();
 			}
 		});
-		gameshop.setBounds(593, 52, 113, 27);
+		gameshop.setBounds(966, 0, 113, 27);
 		contentPane.add(gameshop);
 		
 		JButton lookup = new JButton("lookup orders");
@@ -97,7 +106,7 @@ public class usergui extends JFrame {
 				
 			}
 		});
-		lookup.setBounds(14, 663, 137, 27);
+		lookup.setBounds(0, 844, 137, 27);
 		contentPane.add(lookup);
 		
 		JButton umod = new JButton("users' mod");
@@ -107,28 +116,28 @@ public class usergui extends JFrame {
 				umodgui.runrun();
 			}
 		});
-		umod.setBounds(671, 663, 113, 27);
+		umod.setBounds(966, 844, 113, 27);
 		contentPane.add(umod);
 		
 		JLabel lblNewLabel_2 = new JLabel("library");
-		lblNewLabel_2.setFont(new Font("ËÎÌå", Font.PLAIN, 18));
-		lblNewLabel_2.setBounds(329, 93, 72, 18);
+		lblNewLabel_2.setFont(new Font("å®‹ä½“", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(495, 324, 72, 18);
 		contentPane.add(lblNewLabel_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 118, 784, 270);
+		scrollPane.setBounds(0, 344, 1079, 250);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_3 = new JLabel("dlclist");
-		lblNewLabel_3.setFont(new Font("ËÎÌå", Font.PLAIN, 17));
-		lblNewLabel_3.setBounds(339, 401, 72, 18);
+		lblNewLabel_3.setFont(new Font("å®‹ä½“", Font.PLAIN, 17));
+		lblNewLabel_3.setBounds(484, 598, 72, 18);
 		contentPane.add(lblNewLabel_3);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(0, 424, 784, 230);
+		scrollPane_1.setBounds(0, 617, 1079, 230);
 		contentPane.add(scrollPane_1);
 		
 		table_1 = new JTable();
@@ -167,7 +176,9 @@ public class usergui extends JFrame {
 				
 			}
 		});
-		refresh.setBounds(436, 92, 113, 27);
+		refresh.setBounds(966, 296, 113, 27);
 		contentPane.add(refresh);
+		
+
 	}
 }
