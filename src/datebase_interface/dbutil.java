@@ -813,6 +813,31 @@ public class dbutil {
 		}
 		return i;
 	}
+	
+		public String getuimage(Connection con,String ac) {
+		String im = new String();
+		try {
+			ps = con.prepareStatement("select usersimage from users where id = '"+ac+"'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "qurry fail!");
+		}
+		try {
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "qurry fail!");
+		}
+		try {
+			while(rs.next()) {
+				im = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "qurry fail!");
+		}
+		return im;
+	}
 }
 
 
